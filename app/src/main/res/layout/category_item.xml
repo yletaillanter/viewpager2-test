@@ -25,7 +25,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                card_view:text="@tools:sample/lorem" />
+                card_view:text="@tools:sample/lorem"
+                android:textSize="40dp" />
             <ImageView
                 android:id="@+id/categoryImage"
                 android:layout_width="wrap_content"

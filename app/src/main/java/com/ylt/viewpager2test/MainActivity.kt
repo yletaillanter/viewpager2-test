@@ -1,5 +1,6 @@
 package com.ylt.viewpager2test
 
+import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -27,6 +28,10 @@ class MainActivity : AppCompatActivity() {
 
         viewPager2.orientation = ViewPager2.ORIENTATION_VERTICAL
 
+        val pageTransformer = DepthPageTransformer()
+        viewPager2.setPageTransformer(pageTransformer)
+
+        /*
         viewPager2.setPageTransformer { page, position ->
             val viewPager = page.parent.parent as ViewPager2
             val offset = position * -(2 * offsetPx + pageMarginPx)
@@ -40,7 +45,7 @@ class MainActivity : AppCompatActivity() {
             } else {
                 page.translationY = offset
             }
-        }
+        }*/
 
         val localAdapter = CategoryAdapter()
         localAdapter.setItem(categories)
@@ -49,21 +54,11 @@ class MainActivity : AppCompatActivity() {
         TabLayoutMediator(tabLayout, viewPager2,
             TabLayoutMediator.TabConfigurationStrategy { tab, position ->
                 when (position) {
-                    0 -> {
-                        tab.text = categories[0].name
-                    }
-                    1 -> {
-                        tab.text = categories[1].name
-                    }
-                    2 -> {
-                        tab.text = categories[2].name
-                    }
-                    3 -> {
-                        tab.text = categories[3].name
-                    }
-                    4 -> {
-                        tab.text = categories[4].name
-                    }
+                    0 -> {tab.text = categories[0].name}
+                    1 -> {tab.text = categories[1].name}
+                    2 -> {tab.text = categories[2].name}
+                    3 -> {tab.text = categories[3].name}
+                    4 -> {tab.text = categories[4].name}
                 }
             }).attach()
     }
